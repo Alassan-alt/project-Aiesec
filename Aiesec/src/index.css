@@ -1,0 +1,48 @@
+@import 'tailwindcss';
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+@keyframes mb-wave-sweep {
+  0% {
+    transform: translateY(110%) skewY(-8deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120%) skewY(-8deg);
+    opacity: 0;
+  }
+}
+
+@keyframes mb-pulse-glow {
+  0% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.55;
+  }
+  100% {
+    opacity: 0.25;
+  }
+}
+
+.mb-wave-overlay {
+  position: absolute;
+  inset: -40px;
+  animation: mb-wave-sweep 1400ms cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
+  pointer-events: none;
+}
+
+.mb-ambient-glow {
+  position: absolute;
+  inset: -60px;
+  animation: mb-pulse-glow 2200ms ease-in-out infinite;
+  pointer-events: none;
+}
