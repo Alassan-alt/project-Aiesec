@@ -32,7 +32,7 @@ export function QrCode({ text, size = 180 }: { text: string; size?: number }) {
   if (!dataUrl) {
     return (
       <div
-        className="grid place-items-center rounded-xl bg-white/10 text-xs text-white/70"
+        className="grid place-items-center rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-500"
         style={{ width: size, height: size }}
       >
         Génération…

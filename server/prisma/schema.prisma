@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum PrizeId {
+  KEYCHAIN
+  PEN
+  INTERNSHIP_10
+  INTERNSHIP_5
+  BOTTLE
+  GOOD_LUCK
+  KISS
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  username     String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Prize {
+  id        PrizeId  @id
+  label     String
+  short     String
+  baseCount Int
+  imageUrl  String?
+  lockers   Locker[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Locker {
+  token       String   @id
+  prizeId     PrizeId
+  prize       Prize    @relation(fields: [prizeId], references: [id])
+
+  createdAt   DateTime @default(now())
+  openedAt    DateTime?
+
+  userName    String?
+  claimedAt   DateTime?
+
+  // Optional: keep which visual box index was clicked.
+  selectedIdx Int?
+
+  @@index([openedAt])
+  @@index([prizeId])
+}

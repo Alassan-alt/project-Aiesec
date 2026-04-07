@@ -18,6 +18,7 @@ export type LockerRecord = {
   token: string
   prizeId: PrizeId
   createdAtIso: string
+  userName?: string
   openedAtIso?: string
 }
 

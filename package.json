@@ -1,0 +1,15 @@
+{
+  "name": "project-aiesec",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "pnpm -C Aiesec dev",
+    "build": "pnpm -C Aiesec build",
+    "preview": "pnpm -C Aiesec preview",
+    "lint": "pnpm -C Aiesec lint",
+
+    "dev:server": "pnpm -C server dev",
+    "build:server": "pnpm -C server build",
+    "start:server": "pnpm -C server start"
+  }
+}

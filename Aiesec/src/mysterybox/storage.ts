@@ -64,6 +64,26 @@ export function markOpened(token: string): LockerRecord | null {
   return updated
 }
 
+export function setLockerUserName(token: string, userName: string): LockerRecord | null {
+  const state = loadState()
+  const locker = state.lockers[token]
+  if (!locker) return null
+
+  // Associate once: if already set, keep the original value.
+  if (locker.userName && locker.userName.trim().length > 0) return locker
+
+  const cleaned = userName.trim().replace(/\s+/g, ' ')
+  if (cleaned.length === 0) return locker
+
+  const updated: LockerRecord = {
+    ...locker,
+    userName: cleaned.slice(0, 60),
+  }
+  state.lockers[token] = updated
+  saveState(state)
+  return updated
+}
+
 export function getAllLockers(): LockerRecord[] {
   const state = loadState()
   return Object.values(state.lockers)

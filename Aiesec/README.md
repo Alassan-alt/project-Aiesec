@@ -71,6 +71,27 @@ Vérifie ces points (et redémarre le serveur dev après installation):
 - PostCSS est configuré pour Tailwind v4 dans `postcss.config.js` avec `@tailwindcss/postcss`.
 - `src/main.tsx` importe `./index.css`.
 
+## API Server (MongoDB) – Démarrage
+
+Le backend est dans `project-Aiesec/server` et utilise **MongoDB**.
+
+### Variables d’environnement
+
+Dans `project-Aiesec/server/.env` :
+
+- `MONGODB_URI` (ex: `mongodb://localhost:27017` ou votre URI Atlas)
+- `MONGODB_DB` (ex: `aiesec_mysterybox`)
+- `JWT_SECRET` (min 16 caractères)
+
+### Lancer en dev
+
+Depuis `project-Aiesec/` :
+
+```bash
+pnpm -C server install
+pnpm -C server dev
+```
+
 
 You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
