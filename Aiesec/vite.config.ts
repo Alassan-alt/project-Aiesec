@@ -8,11 +8,11 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:4000',
+        target: 'https://project-aiesec-1.onrender.com',
         changeOrigin: true,
       },
       '/health': {
-        target: 'http://localhost:4000',
+        target: 'https://project-aiesec-1.onrender.com',
         changeOrigin: true,
       },
     },
